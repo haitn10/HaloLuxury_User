@@ -12,17 +12,23 @@ module.exports = {
     fontFamily: {
       primary: ["Montserrat", "sans-serif"],
       second: ["Roboto", "serif"],
+      third: ["Viaoda Libre", "sans-serif"],
     },
     colors: {
       primary: "#608FA3",
       second: "#B48F4C",
+      "second-1": "#94753e",
       admin: "#F0F0F0",
+      light: "#FFFFFF",
+      red: "#DF3B3B"
     },
     textColor: {
       primary: "#080808",
       second: "#888888",
       third: "#E42C14",
       light: "#FFFFFF",
+      yellow:"#B48F4C",
+      blue: "#608FA3"
     },
     borderWidth: {
       1: "1px",
@@ -43,6 +49,10 @@ module.exports = {
         75: "75px",
         100: "100px",
         195: "195px",
+        275: "275px",
+        450: "450px",
+        550: "550px",
+        700: "700px",
       },
     },
   },

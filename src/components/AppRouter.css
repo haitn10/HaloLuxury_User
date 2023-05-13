@@ -1,6 +1,22 @@
 @tailwind base;
 @layer base {
-    body {
-        @apply font-primary;
-    }
+  body {
+    @apply font-primary;
+    @apply font-second;
+    @apply font-third;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
 }

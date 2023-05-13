@@ -1,4 +1,4 @@
-import * as ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import "./styles/index.css";
 import AppRouter from "./components/AppRouter";
 import { Provider } from "react-redux";

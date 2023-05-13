@@ -1,20 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./login";
-import Layout from "./common/Layout";
 import "./AppRouter.css";
+import Register from "./register";
 
-function App() {
+function AppRouter() {
   return (
-    <div className="">
+    <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Login />} />
-          </Route>
+          <Route index element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default AppRouter;
