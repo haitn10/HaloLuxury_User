@@ -11,7 +11,7 @@ import MenuItems from "./MenuItems";
 const Navbar = () => {
   const [show, setShow] = useState(true);
   return (
-    <nav className="bg-second h-75 font-second fixed w-full">
+    <nav className="bg-second h-75 font-second fixed w-full z-50">
       <div className="grid grid-cols-3 items-center h-full">
         <div className="flex justify-start ml-8">
           <button onClick={() => setShow(!show)}>

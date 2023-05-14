@@ -20,7 +20,8 @@ module.exports = {
       "second-1": "#94753e",
       admin: "#F0F0F0",
       light: "#FFFFFF",
-      red: "#DF3B3B"
+      red: "#DF3B3B",
+      third: "#F9F9F4"
     },
     textColor: {
       primary: "#080808",
@@ -30,6 +31,7 @@ module.exports = {
       yellow:"#B48F4C",
       blue: "#608FA3"
     },
+
     borderWidth: {
       1: "1px",
       2: "2px",
@@ -48,12 +50,21 @@ module.exports = {
         65: "65px",
         75: "75px",
         100: "100px",
+        150: "150px",
         195: "195px",
         275: "275px",
         450: "450px",
         550: "550px",
         700: "700px",
+        800: "800px",
+        950: "950px",
       },
+      fontSize: {
+        400: "400px"
+      },
+      margin: {
+        18: "70px"
+      }
     },
   },
   plugins: [],

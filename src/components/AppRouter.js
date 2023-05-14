@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./login";
 import "./AppRouter.css";
-import Register from "./register";
+import HomePage from "../pages/Home";
 
 function AppRouter() {
   return (
     <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route index element={<Login />} />
+          <Route index element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
