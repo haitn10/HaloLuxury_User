@@ -21,15 +21,19 @@ module.exports = {
       admin: "#F0F0F0",
       light: "#FFFFFF",
       red: "#DF3B3B",
-      third: "#F9F9F4"
+      third: "#F9F9F4",
+      "third-1": "#F4F5F9",
+      "third-2": "#F9F5F4",
     },
     textColor: {
       primary: "#080808",
       second: "#888888",
       third: "#E42C14",
       light: "#FFFFFF",
-      yellow:"#B48F4C",
-      blue: "#608FA3"
+      yellow: "#B48F4C",
+      blue: "#608FA3",
+      gray: "#888888",
+      red: "#DF3B3B",
     },
 
     borderWidth: {
@@ -52,7 +56,9 @@ module.exports = {
         100: "100px",
         150: "150px",
         195: "195px",
+        225: "225px",
         275: "275px",
+        350: "350px",
         450: "450px",
         550: "550px",
         700: "700px",
@@ -60,10 +66,13 @@ module.exports = {
         950: "950px",
       },
       fontSize: {
-        400: "400px"
+        400: "400px",
       },
       margin: {
-        18: "70px"
+        18: "70px",
+      },
+      borderRadius: {
+        full: "100%",
       }
     },
   },

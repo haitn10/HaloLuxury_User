@@ -1,0 +1,7 @@
+.horizontal-scroll-wrapper {
+  overflow-x: hidden;
+}
+
+.horizontal-scroll-wrapper > div {
+  transform-origin: right top;
+}
