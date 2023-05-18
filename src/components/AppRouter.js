@@ -8,7 +8,7 @@ function AppRouter() {
     <div className="app">
       <BrowserRouter>
         <Routes>
-          <Route index element={<HomePage />} />
+          <Route index element={<Shop />} />
         </Routes>
       </BrowserRouter>
     </div>

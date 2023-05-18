@@ -1,0 +1,31 @@
+ul > li {
+  display: flex;
+  align-items: center;
+}
+
+ul > li > div {
+  height: 12px;
+  width: 12px;
+  margin: 0.5rem;
+}
+
+ul > li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.5s;
+}
+
+.btn-selection button {
+  border: 1px solid #608fa3;
+  border-radius: 20px;
+  padding: 0.5rem 1.75rem 0.5rem 1.75rem;
+  scroll-snap-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #fff;
+}
+
+.btn-selection button .active {
+  background-color: #b48f4c;
+  color: #fff;
+}

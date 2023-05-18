@@ -15,9 +15,9 @@ function Login() {
             className="h-100 flex justify-center items-center"
           >
             <div className="border-3 w-700 h-16 border-light text-center">
-              <span className="font-third text-light text-5xl stroke-text">
+              <h1 className="font-third text-light text-5xl stroke-text">
                 Login
-              </span>
+              </h1>
             </div>
           </div>
         </div>
