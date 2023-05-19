@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import bg from "../../assets/bglogin.png";
 import { Link } from "react-router-dom";
 
@@ -38,7 +38,6 @@ function Register() {
                   required
                   className="h-12 w-full rounded-20 border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Type your name"
-                  autoFocus
                 />
               </div>
               <div className="mb-1" data-te-input-wrapper-init>
@@ -47,7 +46,6 @@ function Register() {
                   required
                   className="h-12 w-full rounded-20 border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Type your email"
-                  autoFocus
                 />
               </div>
               <div className="mb-1" data-te-input-wrapper-init>

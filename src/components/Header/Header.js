@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../../assets/HL-Logo.png";
 import {
   Bars3Icon,
@@ -9,6 +9,8 @@ import {
 import MenuItems from "./MenuItems";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   const [show, setShow] = useState(true);
   return (
     <nav className="bg-second h-75 font-second fixed w-full z-50">
@@ -42,10 +44,20 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="md:flex hidden md:shrink-0 gap-5">
-            <button className="border-1 rounded-20 h-9 w-24 border-admin text-light font-medium text-base md:none hover:bg-second-1">
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+              className="border-1 rounded-20 h-9 w-24 border-admin text-light font-medium text-base md:none hover:bg-second-1"
+            >
               Login
             </button>
-            <button className="border-1 rounded-20 h-9 w-24 border-admin text-light font-medium text-base hover:bg-second-1">
+            <button
+              onClick={() => {
+                navigate("/register");
+              }}
+              className="border-1 rounded-20 h-9 w-24 border-admin text-light font-medium text-base hover:bg-second-1"
+            >
               Register
             </button>
           </div>
