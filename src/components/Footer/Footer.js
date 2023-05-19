@@ -3,7 +3,7 @@ import LOGO from "../../assets/HL-Logo.png";
 
 const Footer = () => {
   return (
-    <footer className="z-10 bg-primary mt-10 pt-10 lg:pt-[60px] bottom-0 font-second">
+    <footer className="bg-primary mt-10 pt-10 lg:pt-[60px] font-second">
       <div className="container mx-auto">
         <div className="mx-4 flex flex-wrap">
           <div className="w-full px-4 sm:w-2/3 lg:w-3/12">
