@@ -81,7 +81,7 @@ function Login() {
             <div className="text-center">
               <span className="text-lg">Don't have a account?</span>
               <Link
-                to={""}
+                to={"/register"}
                 className="ml-5 text-blue font-medium underline text-lg"
               >
                 Register

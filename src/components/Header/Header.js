@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/HL-Logo.png";
 import {
   Bars3Icon,
@@ -10,6 +10,8 @@ import MenuItems from "./MenuItems";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname);
 
   const [show, setShow] = useState(true);
   return (
@@ -38,7 +40,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="w-10 h-10 flex items-center justify-center hover:bg-second-1 hover:rounded-20">
-              <Link>
+              <Link to={"/mycart"}>
                 <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
               </Link>
             </li>
