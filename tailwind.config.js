@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
   theme: {
@@ -24,6 +26,8 @@ module.exports = {
       third: "#F9F9F4",
       "third-1": "#F4F5F9",
       "third-2": "#F9F5F4",
+      gray: "#888888",
+      green: "#30A134",
     },
     textColor: {
       primary: "#080808",
@@ -73,8 +77,8 @@ module.exports = {
       },
       borderRadius: {
         full: "100%",
-      }
+      },
     },
   },
   plugins: [],
-};
+});

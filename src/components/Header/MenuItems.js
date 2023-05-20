@@ -18,8 +18,8 @@ const MenuItems = ({ show }) => {
       hidden={show}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 h-full">
-        <ul className="inline-block ml-5 mt-4">
-          <li className="font-bold text-xl uppercase w-275 border-b-2 border-second">
+        <ul className="inline-block ml-5 mt-4 list-none">
+          <li className="font-bold text-xl uppercase w-275 border-b-2 border-second ">
             Type Clothes
           </li>
           {items.map((item) => (

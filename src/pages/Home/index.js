@@ -52,7 +52,7 @@ const services= [
 const HomePage = () => {
   return (
     <>
-      <div className=" font-second">
+      <div className="font-second">
         <Header />
         <div className="relative">
           {/* Banner */}
