@@ -11,7 +11,9 @@ import {
   ChatBubbleLeftEllipsisIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
-import { Carousel } from "@material-tailwind/react";
+import { HomeIcon } from "@heroicons/react/24/solid";
+import { Breadcrumbs, Carousel } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
   return (
@@ -24,6 +26,15 @@ const ProductDetails = () => {
           </h1>
         </div>
         <div className="container mx-auto mt-10">
+          <Breadcrumbs className="bg-inherit mb-10">
+            <Link to="#" className="opacity-60">
+              <HomeIcon className="w-4 h-4" />
+            </Link>
+            <Link to="#" className="opacity-60">
+              <span>Bags</span>
+            </Link>
+            <Link href="#">Dior</Link>
+          </Breadcrumbs>
           <div className="grid grid-cols-2">
             <div className="flex flex-row justify-center gap-5">
               <div className="item-img w-32 flex flex-col align-middle gap-2">

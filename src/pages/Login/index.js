@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import bg from "../../assets/bglogin.png";
 import { Link } from "react-router-dom";
 
@@ -81,7 +81,7 @@ function Login() {
             <div className="text-center">
               <span className="text-lg">Don't have a account?</span>
               <Link
-                to={""}
+                to={"/register"}
                 className="ml-5 text-blue font-medium underline text-lg"
               >
                 Register
