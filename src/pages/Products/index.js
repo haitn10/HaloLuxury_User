@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ProductItem from "../../components/Items/ProductItem";
 import bg from "../../assets/bglogin.png";
+import { Button } from "@material-tailwind/react";
 import "./index.css";
 
 const Shop = () => {
@@ -19,22 +20,12 @@ const Shop = () => {
           style={{ backgroundImage: `url(${bg})` }}
           className="h-20 flex justify-center items-center"
         >
-          <div className="btn-selection flex snap-x gap-14">
-            <button className="active">
-              Bag Luxury
-            </button>
-            <button>
-              Bag Luxury
-            </button>
-            <button>
-              Bag Luxury
-            </button>
-            <button>
-              Bag Luxury
-            </button>
-            <button>
-              Bag Luxury
-            </button>
+          <div className="flex snap-x gap-14">
+            <div className="bg-white hover:bg-second active:bg-second rounded-20 transition-all">
+              <Button className="border-1 border-primary rounded-20 hover:text-light active:text-light transition-all font-bold text-sm w-32">
+                Bags
+              </Button>
+            </div>
           </div>
         </div>
         <div className="container mx-auto ">
@@ -48,9 +39,9 @@ const Shop = () => {
                 </div>
                 <div className="p-2 mt-2">
                   <h1 className="font-normal text-lg">Sort By</h1>
-                  <ul className="font-light text-sm">
-                    <li>
-                      <div className=" bg-second"></div>Latest Arrivals
+                  <ul className="menu-selection font-light text-sm">
+                    <li className="">
+                      <div className="bg-second"></div>Latest Arrivals
                     </li>
                     <li>
                       <div className="bg-primary"></div>Lowest Price
@@ -62,7 +53,7 @@ const Shop = () => {
                 </div>
                 <div className="p-2 mt-2">
                   <h1 className="font-normal text-lg">Pattern</h1>
-                  <ul className="font-light text-sm">
+                  <ul className="menu-selection font-light text-sm">
                     <li>
                       <div className="bg-primary"></div>Color Block
                     </li>
@@ -76,7 +67,7 @@ const Shop = () => {
                 </div>
                 <div className="p-2 mt-2">
                   <h1 className="font-normal text-lg">Price</h1>
-                  <ul className="font-light text-sm">
+                  <ul className="menu-selection font-light text-sm">
                     <li>
                       <div className="bg-primary"></div>$99 - $299
                     </li>
@@ -93,7 +84,7 @@ const Shop = () => {
                 </div>
                 <div className="p-2 mt-2">
                   <h1 className="font-normal text-lg">Brands</h1>
-                  <ul className="font-light text-sm">
+                  <ul className="menu-selection font-light text-sm">
                     <li>
                       <div className="bg-primary"></div>Dior
                     </li>

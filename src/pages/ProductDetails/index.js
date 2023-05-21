@@ -4,7 +4,6 @@ import Footer from "../../components/Footer/Footer";
 import OtherItem from "../../components/Items/OtherItem";
 import tote from "../../assets/tote5.jpg";
 import dior from "../../assets/dior.png";
-import "./index.css";
 import {
   BriefcaseIcon,
   BuildingOfficeIcon,
