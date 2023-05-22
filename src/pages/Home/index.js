@@ -60,7 +60,7 @@ const HomePage = () => {
             <div className="absolute w-full">
               <img src={banner} alt="banner" className="w-full h-screen" />
             </div>
-            <div className="absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
+            <div className="z-20 absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
               <div className="absolute grid grid-cols-3 w-full container mx-auto mt-20">
                 <div className="mt-20 p-5 text-light z-50">
                   <p className=" mt-20 mb-5">
