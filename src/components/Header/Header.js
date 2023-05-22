@@ -7,6 +7,7 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import MenuItems from "./MenuItems";
+import { Badge } from "@material-tailwind/react";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -35,13 +36,17 @@ const Navbar = () => {
         <div className="inline-flex justify-end gap-5 mr-10 items-center">
           <ul className="flex gap-5 items-center">
             <li className="w-10 h-10 flex items-center justify-center hover:bg-second-1 hover:rounded-20">
-              <Link to={""} className="">
-                <BellIcon className="w-7 h-7 text-light font-bold" />
+              <Link to={"/mycart"}>
+                <Badge content="5" className="bg-red text-light">
+                  <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
+                </Badge>
               </Link>
             </li>
             <li className="w-10 h-10 flex items-center justify-center hover:bg-second-1 hover:rounded-20">
-              <Link to={"/mycart"}>
-                <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
+              <Link to={""} className="">
+                <Badge className="bg-red">
+                  <BellIcon className="w-7 h-7 text-light font-bold" />
+                </Badge>
               </Link>
             </li>
           </ul>

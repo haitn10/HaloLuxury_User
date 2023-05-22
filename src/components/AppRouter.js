@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import Products from "../pages/Products";
 import ProductDetails from "../pages/ProductDetails";
 import History from "../pages/History";
+import Cart from "../pages/Cart";
 
 function AppRouter() {
   return (
@@ -19,6 +20,7 @@ function AppRouter() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id/details" element={<ProductDetails />} />
           <Route path="/history" element={<History />} />
+          <Route path="/mycart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
     </div>
