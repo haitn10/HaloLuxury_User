@@ -1,0 +1,3 @@
+export const SET_PROFILE_STATE = 'SET_PROFILE_STATE'
+export const UPDATE_PROFILE = 'UPDATE_PROFILE'
+export const LOG_OUT = 'LOG_OUT'
