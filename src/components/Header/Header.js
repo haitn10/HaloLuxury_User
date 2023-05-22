@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import React, { Fragment, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/HL-Logo.png";
 import {
   Bars3Icon,
@@ -10,16 +8,8 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import MenuItems from "./MenuItems";
-import {
-  Badge,
-  Button,
-  Menu,
-  MenuHandler,
-  MenuItem,
-  MenuList,
-} from "@material-tailwind/react";
+import { Badge, Menu, MenuHandler, MenuList } from "@material-tailwind/react";
 import Item from "../../assets/tote5.jpg";
-
 
 const items = [
   { id: 1, items: "Bags" },
@@ -39,9 +29,6 @@ const Navbar = () => {
     <nav className="bg-second h-75 font-second fixed w-full z-50">
       <div className="grid grid-cols-3 items-center h-full">
         <div className="flex justify-start ml-8">
-          <button onClick={() => setShow(!show)}>
-            <Bars3Icon className="w-10 h-10 text-light hover:bg-second-1 hover:rounded-20 transition-all" />
-          </button>
           <Fragment>
             <Menu placement="bottom-start">
               <MenuHandler>
@@ -71,13 +58,13 @@ const Navbar = () => {
                       NEW
                     </span>
                     {/* <Link to={"/products"}> */}
-                      <div className="flex justify-center">
-                        <img src={Item} alt="item" className="w-44 mb-3" />
-                      </div>
-                      <div className="ml-3 h-10 text-yellow">
-                        <h2 className="font-normal">DIOR Relaxed Sweatshirt</h2>
-                        <h2 className="font-bold">$ 2999</h2>
-                      </div>
+                    <div className="flex justify-center">
+                      <img src={Item} alt="item" className="w-44 mb-3" />
+                    </div>
+                    <div className="ml-3 h-10 text-yellow">
+                      <h2 className="font-normal">DIOR Relaxed Sweatshirt</h2>
+                      <h2 className="font-bold">$ 2999</h2>
+                    </div>
                     {/* </Link> */}
                   </div>
                 </div>
