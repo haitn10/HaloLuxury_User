@@ -56,9 +56,9 @@ const HomePage = () => {
         <Header />
         <div className="relative">
           {/* Banner */}
-          <div className="h-screen">
-            <div className="absolute w-full">
-              <img src={banner} alt="banner" className="w-full h-screen" />
+          <div className="min-h-screen">
+            <div className="absolute w-full bg-black">
+              <img src={banner} alt="banner" className="w-full h-screen object-scale-down" />
             </div>
             <div className="absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
               <div className="absolute grid grid-cols-3 w-full container mx-auto mt-20">
@@ -67,7 +67,7 @@ const HomePage = () => {
                     At vero eos et accusamus et iusto odio dignis ducimus qui
                     blanditiis praesentium
                   </p>
-                  <button className="bg-second w-150 h-16 rounded-10 border-1 border-primary hover:bg-second-1">
+                  <button className="bg-second w-150 h-16 rounded-10 border-1 border-white hover:bg-second-1 transition-all">
                     See Collection
                   </button>
                 </div>
@@ -75,7 +75,7 @@ const HomePage = () => {
               <img
                 src={girl}
                 alt="banner"
-                className="max-h-[calc(100vh-200px)] mb-20 ml-32"
+                className="md:max-h-[calc(100vh-200px)] md:shadow-sm mb-20 ml-32"
               />
             </div>
           </div>
