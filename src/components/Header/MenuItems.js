@@ -33,17 +33,19 @@ const MenuItems = ({ show }) => {
             </li>
           ))}
         </ul>
-        <div className="flex-col">
+        <div className="flex-col hover:shadow-lg transition-all">
           <span className="absolute right-0 pl-3 mt-5 bg-red text-light w-20 font-semibold">
             NEW
           </span>
-          <div className="flex justify-center rounded-10">
-            <img src={Item} alt="item" className="w-195" />
-          </div>
-          <div className="ml-5 mt-3 w-full h-10 text-yellow">
-            <h2 className="font-normal">DIOR Relaxed Sweatshirt</h2>
-            <h2 className="font-bold">$ 2999</h2>
-          </div>
+          <Link to={"/products"}>
+            <div className="flex justify-center rounded-10">
+              <img src={Item} alt="item" className="w-195" />
+            </div>
+            <div className="ml-5 mt-3 w-full h-10 text-yellow">
+              <h2 className="font-normal">DIOR Relaxed Sweatshirt</h2>
+              <h2 className="font-bold">$ 2999</h2>
+            </div>
+          </Link>
         </div>
       </div>
     </div>
