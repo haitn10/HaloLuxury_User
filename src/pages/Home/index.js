@@ -4,52 +4,23 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import banner from "../../assets/Banner.png";
 import girl from "../../assets/Main Girl.png";
-import bag from "../../assets/Rectangle 192.png";
-import intallment from "../../assets/Rectangle 193.png";
-import warranty from "../../assets/Rectangle 194.png";
-import ship from "../../assets/Rectangle 195.png";
 import fire from "../../assets/Rectangle 199.png";
 import cn from "../../assets/cn.png";
-import add from "../../assets/add.png";
-import bb from "../../assets/bb.png";
-import dg from "../../assets/dg.png";
-import dior from "../../assets/dior.png";
-import hm from "../../assets/hm.png";
-import nike from "../../assets/nike.png";
-import rp from "../../assets/rp.png";
 import vl from "../../assets/vl.png";
-import vr from "../../assets/vr.png";
 import line1 from "../../assets/Line 20.png";
 import line2 from "../../assets/Line 21.png";
 import bg1 from "../../assets/image 12.png";
-import bg2 from "../../assets/image 16.jpeg";
-import bg3 from "../../assets/image 14.png";
 import bg4 from "../../assets/image 15.png";
-import bg5 from "../../assets/image 11.jpg";
 import HomeItem from "../../components/Items/HomeItem";
 import ServiceItem from "../../components/Items/ServiceItem";
-
-const logos = [
-  { id: 1, logo: `${cn}` },
-  { id: 2, logo: `${bb}` },
-  { id: 3, logo: `${dg}` },
-  { id: 4, logo: `${dior}` },
-  { id: 5, logo: `${hm}` },
-  { id: 6, logo: `${nike}` },
-  { id: 7, logo: `${vl}` },
-  { id: 8, logo: `${vr}` },
-  { id: 9, logo: `${add}` },
-  { id: 10, logo: `${rp}` },
-];
-
-const services= [
-  { id:1, image: `${bag}`, text: "Order more than 100 models" },
-  { id:2, image: `${ship}`, text: "Installment 0%" },
-  { id:3, image: `${warranty}`, text: "A year warranty" },
-  { id:4, image: `${intallment}`, text: "Freeship" },
-]
+import { Button } from "@material-tailwind/react";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { logos, services } from "../../constants/Logo";
+import { useNavigate } from "react-router";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="font-second">
@@ -58,24 +29,33 @@ const HomePage = () => {
           {/* Banner */}
           <div className="min-h-screen">
             <div className="absolute w-full bg-black">
-              <img src={banner} alt="banner" className="w-full h-screen object-scale-down" />
+              <img
+                src={banner}
+                alt="banner"
+                className="w-full h-screen object-scale-down"
+              />
             </div>
-            <div className="z-20 absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
+            <div className="absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
               <div className="absolute grid grid-cols-3 w-full container mx-auto mt-20">
                 <div className="mt-20 p-5 text-light z-50">
-                  <p className=" mt-20 mb-5">
+                  <p className=" mt-20 mb-5 text-xs md:text-base">
                     At vero eos et accusamus et iusto odio dignis ducimus qui
                     blanditiis praesentium
                   </p>
-                  <button className="bg-second w-150 h-16 rounded-10 border-1 border-white hover:bg-second-1 transition-all">
-                    See Collection
-                  </button>
+                  <Button
+                    variant="text"
+                    className="flex items-center gap-2 rounded-10 border-1 border-white hover:bg-second transition-all"
+                    onClick={() => navigate("/products")}
+                  >
+                    Go to Shop
+                    <ArrowLongRightIcon strokeWidth={2} className="h-5 w-5" />
+                  </Button>
                 </div>
               </div>
               <img
                 src={girl}
                 alt="banner"
-                className="md:max-h-[calc(100vh-200px)] md:shadow-sm mb-20 ml-32"
+                className="max-h-[calc(80vh-40%)] md:max-h-[calc(100vh-200px)] md:shadow-sm mb-20 ml-16 md:ml-32 align-middle"
               />
             </div>
           </div>
@@ -83,9 +63,13 @@ const HomePage = () => {
           {/* Invite */}
           <div className="h-150 container mx-auto my-10">
             <div className="grid grid-cols-4 text-center">
-              {services.map((service)=> (
-                <ServiceItem key={service.id} image={service.image} text={service.text} />
-              ) )}
+              {services.map((service) => (
+                <ServiceItem
+                  key={service.id}
+                  image={service.image}
+                  text={service.text}
+                />
+              ))}
             </div>
           </div>
 
@@ -144,7 +128,7 @@ const HomePage = () => {
 
           {/* Hot Sale */}
 
-          <div className="min-h-min container mx-auto">
+          <div className="min-h-min md:container mx-auto">
             <div className="flex justify-start items-center">
               <h1 className="font-third text-4xl ml-10 text-blue">Hot Sale</h1>
               <div>
@@ -164,19 +148,19 @@ const HomePage = () => {
                   <div className="flex flex-col p-2 mx-3">
                     <div className="">
                       <div className="border-b-2 border-second">
-                        <h1 className="font-medium text-xl">
+                        <h1 className="font-medium md:text-xl">
                           Chanel Mini Love Flap Bag Black
                         </h1>
                       </div>
-                      <h2 className="font-semibold text-red text-2xl my-1">
+                      <h2 className="font-semibold text-red md:text-2xl my-1">
                         Sold Out with $299
                       </h2>
                     </div>
                     <div className="mt-1 text-ellipsis overflow-hidden">
-                      <h4 className="font-semibold text-lg">
+                      <h4 className="font-semibold text-sm md:text-lg">
                         Product Details:
                       </h4>
-                      <ul className="list-disc ml-5">
+                      <ul className="list-disc ml-5 text-xs md:text-base">
                         <li>Use original cowhide material</li>
                         <li>Made entirely by hand</li>
                         <li>98% standard compared to genuine</li>
@@ -190,19 +174,19 @@ const HomePage = () => {
                 </div>
                 <div className="">
                   <div className="flex flex-col items-center mb-2">
-                    <div className="h-24 w-24">
+                    <div className="h-12 w-12 md:h-24 md:w-24">
                       <img
                         src={cn}
                         alt=""
                         className="w-full h-full object-scale-down rounded-full"
                       />
                     </div>
-                    <h1 className="text-3xl font-semibold text-yellow">
+                    <h1 className="md:text-3xl font-semibold text-yellow">
                       Chanel Store
                     </h1>
                   </div>
                   <div className="mt-3">
-                    <ul className="list-none text-lg">
+                    <ul className="list-none text-sm md:text-lg">
                       <li>
                         <strong>HotLine:</strong> 0344444567
                       </li>
@@ -223,21 +207,12 @@ const HomePage = () => {
           {/* Show */}
           <div className="max-h-700 bg-third-2">
             <div className="container h-full mx-auto">
-              <div className="grid grid-cols-3 gap-4 h-full p-10 items-center ">
-                <div class="md:col-span-2">
-                  <img src={bg4} alt="item1" className="max-h-350" />
-                </div>
-                <div class="">
-                  <img src={bg3} alt="item2" className="max-h-350" />
-                </div>
-                <div class="">
+              <div className="grid grid-cols-4 gap-4 h-full p-10 justify-items-center">
+                <div class="col-span-4 md:col-span-2">
                   <img src={bg1} alt="item3" className="h-275" />
                 </div>
-                <div class="">
-                  <img src={bg2} alt="item4" className="h-275" />
-                </div>
-                <div class="">
-                  <img src={bg5} alt="item5" className="h-275" />
+                <div class="col-span-4 md:col-span-2">
+                  <img src={bg4} alt="item1" className="h-275" />
                 </div>
               </div>
             </div>

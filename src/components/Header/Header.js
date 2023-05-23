@@ -8,7 +8,13 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import MenuItems from "./MenuItems";
-import { Badge, Menu, MenuHandler, MenuList } from "@material-tailwind/react";
+import {
+  Badge,
+  Menu,
+  MenuHandler,
+  MenuItem,
+  MenuList,
+} from "@material-tailwind/react";
 import Item from "../../assets/tote5.jpg";
 
 const items = [
@@ -30,14 +36,14 @@ const Navbar = () => {
       <div className="grid grid-cols-3 items-center h-full">
         <div className="flex justify-start ml-8">
           <Fragment>
-            <Menu placement="bottom-start">
+            <Menu placement="bottom-start" className="hover: border-none">
               <MenuHandler>
                 <button>
-                  <Bars3Icon className="w-10 h-10 text-light font-bold hover:bg-second-1 hover:rounded-20" />
+                  <Bars3Icon className="w-10 h-10 text-light font-bold hover:bg-second-1 hover:rounded-20 transition-all" />
                 </button>
               </MenuHandler>
-              <MenuList className="flex md:h-275 md:w-550 rounded-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 h-full">
+              <MenuList className="md:h-275 md:w-550 rounded-10">
+                <MenuItem className="grid grid-cols-1 md:grid-cols-2 h-full hover:bg-white focus:bg-white active:bg-white">
                   <ul className="inline-block ml-5 mt-4 list-none">
                     <li className="font-bold text-xl uppercase w-275 border-b-2 border-second ">
                       Type Clothes
@@ -67,7 +73,7 @@ const Navbar = () => {
                     </div>
                     {/* </Link> */}
                   </div>
-                </div>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Fragment>
