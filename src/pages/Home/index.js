@@ -88,7 +88,7 @@ const HomePage = () => {
                   <div className="w-full h-275 border-2 border-second lg:mt-5 md:mt-4 sm:mt-2">
                     <div className="grid grid-cols-5 items-center justify-items-center h-full gap-2 mx-10 p-5">
                       {logos.map((logo) => (
-                        <img src={logo.logo} alt={`logo ${logo.id}`} />
+                        <img key={logo.id} src={logo.logo} alt={`logo ${logo.id}`} />
                       ))}
                     </div>
                   </div>
