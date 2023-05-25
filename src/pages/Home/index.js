@@ -36,7 +36,7 @@ const HomePage = () => {
               />
             </div>
             <div className="absolute flex justify-center h-[calc(100vh-125px)] items-center w-full top-75">
-              <div className="absolute grid grid-cols-3 w-full container mx-auto mt-20">
+              <div className="z-20 absolute grid grid-cols-3 w-full container mx-auto mt-20">
                 <div className="mt-20 p-5 text-light z-50">
                   <p className=" mt-20 mb-5 text-xs md:text-base">
                     At vero eos et accusamus et iusto odio dignis ducimus qui
