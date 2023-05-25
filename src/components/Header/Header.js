@@ -34,7 +34,7 @@ const items = [
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [checkToken, setCheckToken] = useState(false);
+  const [checkToken, setCheckToken] = useState(true);
   const dispatch = useDispatch();
   const numberProducts = useSelector((state) => state.carts.numberProduct);
 
@@ -98,20 +98,23 @@ const Navbar = () => {
           <ul className="flex gap-5 items-center">
             <li className="w-10 h-10 flex justify-center hover:bg-second-1 hover:rounded-20 transition-all">
               <Link to={"/mycart"} className="flex items-center ">
-                <Badge content={numberProducts} className="bg-red text-light w-5 h-5">
+                <Badge
+                  content={numberProducts}
+                  className="bg-red text-light w-5 h-5"
+                >
                   <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
                 </Badge>
               </Link>
             </li>
             <li className="w-10 h-10 flex justify-center hover:bg-second-1 hover:rounded-20 transition-all">
               <Menu placement="bottom-end">
-                <MenuHandler>
-                  <Badge className="bg-red mt-2 mr-2">
+                <Badge className="bg-red mt-2 mr-2">
+                  <MenuHandler>
                     <button>
                       <BellIcon className="w-7 h-7 text-light font-bold" />
                     </button>
-                  </Badge>
-                </MenuHandler>
+                  </MenuHandler>
+                </Badge>
                 <MenuList className="flex flex-col gap-2 rounded-10">
                   <MenuItem className="flex items-center gap-4 py-2 pr-8 pl-2">
                     <Avatar
