@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/HL-Logo.png";
 import {
@@ -21,6 +21,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import Item from "../../assets/tote5.jpg";
+import { useDispatch, useSelector } from "react-redux";
 
 const items = [
   { id: 1, items: "Bags" },
@@ -34,8 +35,9 @@ const items = [
 const Navbar = () => {
   const navigate = useNavigate();
   const [checkToken, setCheckToken] = useState(false);
+  const dispatch = useDispatch();
+  const numberProducts = useSelector((state) => state.carts.numberProduct);
 
-  const [show, setShow] = useState(true);
   return (
     <nav className="bg-second h-75 font-second fixed w-full z-50">
       <div className="grid grid-cols-3 items-center h-full">
@@ -58,7 +60,7 @@ const Navbar = () => {
                         key={item.id}
                         className="mt-2 font-medium hover:underline transition-all"
                       >
-                        <Link to={""} className="uppercase">
+                        <Link to={"/products"} className="uppercase">
                           {item.items}
                         </Link>
                       </li>
@@ -82,7 +84,6 @@ const Navbar = () => {
               </MenuList>
             </Menu>
           </Fragment>
-          <MenuItems show={show} />
         </div>
         <div className="flex justify-center">
           <Link to={"/"}>
@@ -97,7 +98,7 @@ const Navbar = () => {
           <ul className="flex gap-5 items-center">
             <li className="w-10 h-10 flex justify-center hover:bg-second-1 hover:rounded-20 transition-all">
               <Link to={"/mycart"} className="flex items-center ">
-                <Badge content="5" className="bg-red text-light">
+                <Badge content={numberProducts} className="bg-red text-light w-5 h-5">
                   <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
                 </Badge>
               </Link>
