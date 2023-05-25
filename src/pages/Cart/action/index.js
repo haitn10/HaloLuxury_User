@@ -11,7 +11,6 @@ export const GetNumberCart = () => {
 };
 
 export const AddCart = (state) => {
-  
   return {
     type: "ADD_CART",
     state,

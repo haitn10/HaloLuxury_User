@@ -128,7 +128,9 @@ const Cart = () => {
                     placeholder="Enter code discount"
                   />
                   <div className="bg-white rounded-20">
-                    <Button className="rounded-20 border-1 border-primary border-opacity-60">Apply</Button>
+                    <Button className="rounded-20 border-1 border-primary border-opacity-60">
+                      Apply
+                    </Button>
                   </div>
                 </div>
                 <div>
@@ -154,7 +156,9 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-center">
                   <div className="bg-second rounded-10">
-                    <Button className="rounded-20 px-6 text-light">Thanh Toán</Button>
+                    <Button className="rounded-20 px-6 text-light">
+                      Thanh Toán
+                    </Button>
                   </div>
                 </div>
               </div>
