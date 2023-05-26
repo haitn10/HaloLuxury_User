@@ -10,7 +10,6 @@ import {
   ShoppingBagIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import MenuItems from "./MenuItems";
 import {
   Avatar,
   Badge,
@@ -22,6 +21,7 @@ import {
 } from "@material-tailwind/react";
 import Item from "../../assets/tote5.jpg";
 import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../pages/Login/action";
 
 const items = [
   { id: 1, items: "Bags" },
@@ -34,9 +34,17 @@ const items = [
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [checkToken, setCheckToken] = useState(true);
+  const state = useSelector((state) => state);
+  const [checkProfile, setCheckProfile] = useState();
   const dispatch = useDispatch();
-  const numberProducts = useSelector((state) => state.carts.numberProduct);
+
+  useEffect(() => {
+    setCheckProfile(state.auth.profile);
+  }, [state.auth]);
+
+  const onLogOut = async () => {
+    await dispatch(logOut());
+  };
 
   return (
     <nav className="bg-second h-75 font-second fixed w-full z-50">
@@ -99,7 +107,7 @@ const Navbar = () => {
             <li className="w-10 h-10 flex justify-center hover:bg-second-1 hover:rounded-20 transition-all">
               <Link to={"/mycart"} className="flex items-center ">
                 <Badge
-                  content={numberProducts}
+                  content={state.carts.numberProduct}
                   className="bg-red text-light w-5 h-5"
                 >
                   <ShoppingBagIcon className="w-7 h-7 text-light font-bold" />
@@ -197,7 +205,7 @@ const Navbar = () => {
             </li>
           </ul>
 
-          {checkToken ? (
+          {checkProfile ? (
             <div>
               <Menu placement="bottom-end">
                 <MenuHandler>
@@ -222,7 +230,10 @@ const Navbar = () => {
                     </Typography>
                   </MenuItem>
                   <hr className="my-2 border-blue-gray-50" />
-                  <MenuItem className="flex items-center gap-2 ">
+                  <MenuItem
+                    className="flex items-center gap-2 "
+                    onClick={onLogOut}
+                  >
                     <PowerIcon strokeWidth={2} className="h-4 w-4" />
                     <Typography variant="small" className="font-normal">
                       Sign Out

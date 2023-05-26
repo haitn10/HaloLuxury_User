@@ -1,6 +1,7 @@
 import { SET_PROFILE_STATE, LOG_OUT, UPDATE_PROFILE } from "../action";
 
 const initState = {
+  isLoggingIn: false,
   profile: null,
 };
 
@@ -11,7 +12,6 @@ const authReducer = (state = initState, action) => {
         ...state,
         ...action.state,
       };
-
     case UPDATE_PROFILE:
       return {
         ...state,
@@ -19,6 +19,7 @@ const authReducer = (state = initState, action) => {
       };
 
     case LOG_OUT:
+      sessionStorage.clear();
       return {
         ...state,
         profile: null,
