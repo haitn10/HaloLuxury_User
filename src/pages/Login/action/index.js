@@ -33,7 +33,20 @@ export const login = (credential) => async (dispatch, getState) => {
   }
 };
 
-
+export const register = (credential) => async (dispatch) => {
+  try {
+    dispatch(setState({ isLoggingIn: true }));
+    const { data: data } = await axios.post(
+      `${baseURL}/customers/register`,
+      credential
+    );
+    dispatch(setState({ isLoggingIn: false }));
+    return Promise.resolve(data);
+  } catch (e) {
+    const status = e.response.status ? e.response.status : e.message;
+    return Promise.reject(status);
+  }
+};
 
 export const logOut = () => ({
   type: LOG_OUT,

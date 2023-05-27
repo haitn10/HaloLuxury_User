@@ -46,7 +46,7 @@ function Login() {
           onKeyPress={(e) => (e.key === "Enter" ? onSubmit : {})}
         >
           <div className="h-550 w-450 flex-col border-primary border-1 rounded-20 p-10">
-            <form className="flex flex-col gap-2 z-50">
+            <form className="flex flex-col gap-2 z-50" onSubmit={(e) => onSubmit(e)}>
               <div className="mb-1">
                 <label
                   className="block text-lg font-semibold mb-2 px-5"
@@ -98,7 +98,6 @@ function Login() {
               <div className="flex justify-center mt-5 mb-10">
                 <button
                   className="h-11 w-32 bg-second rounded-10 border-primary border-1 text-light font-bold text-xl transition-all hover:bg-second-1"
-                  onClick={(e) => onSubmit(e)}
                 >
                   Sign In
                 </button>

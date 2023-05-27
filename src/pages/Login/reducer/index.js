@@ -12,6 +12,7 @@ const authReducer = (state = initState, action) => {
         ...state,
         ...action.state,
       };
+
     case UPDATE_PROFILE:
       return {
         ...state,
