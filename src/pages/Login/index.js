@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import bg from "../../assets/bglogin.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "./action";
+import { useDispatch } from "react-redux";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (email.length === 0 || password.length === 0) {
+      return;
+    }
+    const result = await dispatch(login({ email, password }));
+    if (result.statusCode === 200) {
+      navigate("/");
+    } else {
+      
+    }
+  };
+
   return (
     <>
       <Header />
@@ -21,13 +41,16 @@ function Login() {
             </div>
           </div>
         </div>
-        <div className="flex justify-center items-center font-primary p-5 mt-10">
+        <div
+          className="flex justify-center items-center font-primary p-5 mt-10"
+          onKeyPress={(e) => (e.key === "Enter" ? onSubmit : {})}
+        >
           <div className="h-550 w-450 flex-col border-primary border-1 rounded-20 p-10">
-            <div className="flex flex-col gap-2 z-50">
-              <div className="mb-1" data-te-input-wrapper-init>
+            <form className="flex flex-col gap-2 z-50" onSubmit={(e) => onSubmit(e)}>
+              <div className="mb-1">
                 <label
-                  class="block text-lg font-semibold mb-2 px-5"
-                  for="Email"
+                  className="block text-lg font-semibold mb-2 px-5"
+                  htmlFor="Email"
                 >
                   Email
                 </label>
@@ -37,13 +60,13 @@ function Login() {
                   required
                   className="h-12 rounded-20 w-full border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Enter email"
-                  autoFocus
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="mb-1" data-te-input-wrapper-init>
+              <div className="mb-1">
                 <label
-                  class="block text-lg font-semibold mb-2 px-5"
-                  for="Password"
+                  className="block text-lg font-semibold mb-2 px-5"
+                  htmlFor="Password"
                 >
                   Password
                 </label>
@@ -53,6 +76,7 @@ function Login() {
                   required
                   className="h-12 rounded-20 w-full border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Enter password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="font-medium text-sm p-1 ml-2 flex justify-between mb-5">
@@ -72,11 +96,13 @@ function Login() {
               </div>
 
               <div className="flex justify-center mt-5 mb-10">
-                <button className="h-11 w-32 bg-second rounded-10 border-primary border-1 text-light font-bold text-xl transition-all hover:bg-second-1">
+                <button
+                  className="h-11 w-32 bg-second rounded-10 border-primary border-1 text-light font-bold text-xl transition-all hover:bg-second-1"
+                >
                   Sign In
                 </button>
               </div>
-            </div>
+            </form>
 
             <div className="text-center">
               <span className="text-lg">Don't have a account?</span>
@@ -93,7 +119,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import bg from "../../assets/bglogin.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { register } from "../Login/action";
 
 function Register() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checkPassword, setCheckPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onRegister = async (e) => {
+    e.preventDefault();
+    if (password !== checkPassword) {
+      return;
+    }
+
+    if (
+      email === "" ||
+      password === "" ||
+      firstName === "" ||
+      lastName === ""
+    ) {
+      return;
+    }
+
+    const result = await dispatch(
+      register({ firstName, lastName, email, password })
+    );
+
+    if (result.statusCode === 200) {
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <Header />
@@ -31,43 +65,59 @@ function Register() {
                 for other purposes described in our privacy policy.
               </p>
             </div>
-            <div className="flex flex-col gap-2 mt-5">
-              <div className="mb-1" data-te-input-wrapper-init>
+            <form
+              className="flex flex-col gap-2 mt-5"
+              onSubmit={(e) => onRegister(e)}
+            >
+              <div className="mb-1">
                 <input
                   type="text"
                   required
                   className="h-12 w-full rounded-20 border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
-                  placeholder="Type your name"
+                  placeholder="Type first name"
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </div>
-              <div className="mb-1" data-te-input-wrapper-init>
+              <div className="mb-1">
+                <input
+                  type="text"
+                  required
+                  className="h-12 w-full rounded-20 border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
+                  placeholder="Type last name"
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+              <div className="mb-1">
                 <input
                   type="email"
                   required
                   className="h-12 w-full rounded-20 border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Type your email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="mb-1" data-te-input-wrapper-init>
+              <div className="mb-1">
                 <input
                   type="password"
                   required
                   className="h-12 rounded-20 w-full border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="mb-1" data-te-input-wrapper-init>
+              <div className="mb-1">
                 <input
                   type="password"
                   required
                   className="h-12 rounded-20 w-full border-1 border-second bg-transparent px-5 outline-none transition-all focus:border-second-1 focus:border-2"
                   placeholder="Confirm password"
+                  onChange={(e) => setCheckPassword(e.target.value)}
                 />
               </div>
               <div className="flex items-center">
                 <input id="checkbox" type="checkbox" />
                 <label
-                  for="checkbox"
+                  htmlFor="checkbox"
                   className="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300"
                 >
                   I agree with the{" "}
@@ -82,11 +132,14 @@ function Register() {
                   Submit & Registger
                 </button>
               </div>
-            </div>
+            </form>
 
             <div className="text-center">
               <span className="text-base">Already have an account?</span>
-              <Link to={"/login"} className="ml-5 text-blue font-medium underline">
+              <Link
+                to={"/login"}
+                className="ml-5 text-blue font-medium underline"
+              >
                 Sign In Now
               </Link>
             </div>
