@@ -2,7 +2,9 @@ import { SET_PROFILE_STATE, LOG_OUT, UPDATE_PROFILE } from "../action";
 
 const initState = {
   isLoggingIn: false,
-  profile: null,
+  profile: sessionStorage.getItem("profile")
+    ? JSON.parse(sessionStorage.getItem("profile"))
+    : null,
 };
 
 const authReducer = (state = initState, action) => {

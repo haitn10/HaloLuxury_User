@@ -1,15 +1,13 @@
 import { ADD_CART, DELETE_CART, GET_NUMBER_PRODUCT } from "../action";
 
-const initialState = sessionStorage.getItem("cart")
-  ? JSON.parse(sessionStorage.getItem("cart"))
-  : {
-      numberProduct: sessionStorage.getItem("cart")
-        ? JSON.parse(sessionStorage.getItem("cart")).length
-        : 0,
-      products: sessionStorage.getItem("cart")
-        ? JSON.parse(sessionStorage.getItem("cart"))
-        : [],
-    };
+const initialState = {
+  numberProduct: sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart")).length
+    : 0,
+  products: sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [],
+};
 
 function carts(state = initialState, action) {
   switch (action.type) {
@@ -29,7 +27,7 @@ function carts(state = initialState, action) {
         state.products.push(product);
       } else {
         let check = false;
-        state.products.map((item, key) => {
+        state.products.map((item) => {
           if (item.id === action.state.id) {
             check = true;
           }
@@ -51,7 +49,7 @@ function carts(state = initialState, action) {
         numberProduct: state.numberProduct + 1,
         sessionStorage: sessionStorage.setItem(
           "cart",
-          JSON.stringify(state)
+          JSON.stringify(state.products)
         ),
       };
 
@@ -62,7 +60,10 @@ function carts(state = initialState, action) {
           (product) => product.id !== action.state
         ),
         numberProduct: state.numberProduct - 1,
-        sessionStorage: sessionStorage.setItem("cart", JSON.stringify(state)),
+        sessionStorage: sessionStorage.setItem(
+          "cart",
+          JSON.stringify(state.products)
+        ),
       };
 
     default:

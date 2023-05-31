@@ -10,21 +10,31 @@ import {
   List,
   ListItem,
   Option,
+  Radio,
   Select,
+  Typography,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HomeIcon } from "@heroicons/react/24/solid";
 
 import { useDispatch, useSelector } from "react-redux";
-import { TrashIcon } from "@heroicons/react/24/outline";
-import { DeleteCart } from "./action";
+import {
+  BanknotesIcon,
+  CreditCardIcon,
+  DevicePhoneMobileIcon,
+  TrashIcon,
+} from "@heroicons/react/24/outline";
+import { DeleteCart, checkOut } from "./action";
+import shipUnit from "../../constants/ShipDelivery";
 
 const Cart = () => {
   const cart = useSelector((state) => state.carts.products);
+  const profile = useSelector((state) => state.auth.profile);
   const dispatch = useDispatch();
-  console.log(cart);
+  const navigate = useNavigate();
 
   const deleteCart = async (productId) => {
+    console.log(productId);
     dispatch(await DeleteCart(productId));
   };
 
@@ -33,6 +43,19 @@ const Cart = () => {
     cart.forEach((product) => (price = product.price + price));
     return price;
   }, [cart]);
+
+  const onCheckOut = async (e) => {
+    e.preventDefault();
+    if (profile == null) {
+      navigate("/login");
+    } else {
+      const respone = await dispatch(checkOut());
+      console.log(respone);
+      if (respone.statusCode === 201) {
+        navigate("/history");
+      }
+    }
+  };
 
   return (
     <div className="font-second">
@@ -89,35 +112,87 @@ const Cart = () => {
               <div className="mb-20">
                 <div className="border-b-2 border-primary pb-4 pl-3 mb-3">
                   <h1 className="font-semibold">Địa chỉ: </h1>
-                  <p>
-                    Nguyễn Văn A{" "}
-                    <span className="font-light italic">(+84) 234819381</span>
-                  </p>
-                  <p>
-                    111A - Dinh Phong Phu Street - Tan Nhon Phu B - 9 District -
-                    HCM, VN
-                  </p>
+                  {profile ? (
+                    <>
+                      <p>
+                        {profile.firstName + profile.lastName}{" "}
+                        <span className="font-light italic">
+                          (+84) 234819381
+                        </span>
+                      </p>
+                      <p>
+                        111A - Dinh Phong Phu Street - Tan Nhon Phu B - 9
+                        District - HCM, VN
+                      </p>
+                    </>
+                  ) : (
+                    <div className="bg-second text-light p-2 pl-3 max-w-xs">
+                      Please login after checking out!
+                    </div>
+                  )}
                 </div>
                 <div className="border-b-2 border-primary pb-4 p-3 mb-3">
-                  <h1 className="font-semibold mb-1">
-                    Chọn Phương Thức Vận Chuyển
-                  </h1>
+                  <h1 className="font-semibold mb-1">Chọn Đơn Vị Vận Chuyển</h1>
                   <div className="flex justify-between items-center">
-                    <div className="w-350">
-                      <Select className="w-full border-second border-1">
-                        <Option defaultValue>Viettel Post</Option>
-                        <Option>Giao Hàng Tiết Kiệm</Option>
-                        <Option>Shoppe Express</Option>
+                    <div className="w-350 mt-2">
+                      <Select
+                        className="w-full"
+                        label="Đơn vị vận chuyển"
+                        name="transferUnit"
+                      >
+                        {shipUnit.map((unit) => (
+                          <Option id={unit.id} value={unit.value}>
+                            {unit.shipName}
+                          </Option>
+                        ))}
                       </Select>
                     </div>
                     <span>{Intl.NumberFormat("vi-VN").format(30000)}</span>
                   </div>
                 </div>
-                <div className="flex justify-between pb-4 p-3 mb-10">
-                  <h1 className="font-semibold">Phí Vận Chuyển</h1>
-                  <p className="font-semibold text-red">
-                    {Intl.NumberFormat("vi-VN").format(30000)}
-                  </p>
+                <div className="flex flex-col justify-between pb-4 p-3">
+                  <h1 className="font-semibold">Phương Thức Thanh Toán</h1>
+                  <div className="flex gap-5">
+                    <Radio
+                      id="cod"
+                      name="type"
+                      className="border-1 border-second"
+                      defaultChecked
+                      label={
+                        <Typography className="flex items-center gap-2">
+                          COD
+                          <BanknotesIcon className="w-5 h-5" color="green" />
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      id="vnp"
+                      name="type"
+                      className="border-1 border-second"
+                      disabled
+                      label={
+                        <Typography className="flex items-center gap-2">
+                          VNPay
+                          <DevicePhoneMobileIcon
+                            className="w-5 h-5"
+                            color="orange"
+                          />
+                        </Typography>
+                      }
+                    />
+                    <Radio
+                      id="mtc"
+                      name="type"
+                      className="border-1 border-second"
+                      disabled
+                      label={
+                        <Typography className="flex items-center gap-2">
+                          MaterCard
+                          <CreditCardIcon className="w-5 h-5" color="gray" />
+                        </Typography>
+                      }
+                    />
+                  </div>
                 </div>
               </div>
               <div className="mb-100">
@@ -156,7 +231,11 @@ const Cart = () => {
                 </div>
                 <div className="flex justify-center">
                   <div className="bg-second rounded-10">
-                    <Button className="rounded-20 px-6 text-light">
+                    <Button
+                      className="rounded-20 px-6 text-light"
+                      onClick={(e) => onCheckOut(e)}
+                      disabled={cart.length === 0}
+                    >
                       Thanh Toán
                     </Button>
                   </div>
