@@ -1,8 +1,12 @@
 import { ADD_CART, DELETE_CART, GET_NUMBER_PRODUCT } from "../action";
 
 const initialState = {
-  numberProduct: 0,
-  products: [],
+  numberProduct: sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart")).length
+    : 0,
+  products: sessionStorage.getItem("cart")
+    ? JSON.parse(sessionStorage.getItem("cart"))
+    : [],
 };
 
 function carts(state = initialState, action) {
@@ -23,7 +27,7 @@ function carts(state = initialState, action) {
         state.products.push(product);
       } else {
         let check = false;
-        state.products.map((item, key) => {
+        state.products.map((item) => {
           if (item.id === action.state.id) {
             check = true;
           }
@@ -43,18 +47,23 @@ function carts(state = initialState, action) {
       return {
         ...state,
         numberProduct: state.numberProduct + 1,
+        sessionStorage: sessionStorage.setItem(
+          "cart",
+          JSON.stringify(state.products)
+        ),
       };
 
     case DELETE_CART:
-      const indexOfObject = state.products.findIndex((object) => {
-        return object.id === action.state;
-      });
-      console.log(state.products.splice(2, 1));
-
       return {
         ...state,
-        // products: state.products.splice(indexOfObject, 1),
-        // numberProduct: state.numberProduct - 1,
+        products: state.products.filter(
+          (product) => product.id !== action.state
+        ),
+        numberProduct: state.numberProduct - 1,
+        sessionStorage: sessionStorage.setItem(
+          "cart",
+          JSON.stringify(state.products)
+        ),
       };
 
     default:

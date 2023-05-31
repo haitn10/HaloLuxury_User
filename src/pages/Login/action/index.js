@@ -23,6 +23,7 @@ export const login = (credential) => async (dispatch, getState) => {
       credential
     );
     axios.defaults.headers = { Authorization: data.data.token };
+    console.log(axios.defaults.headers);
     dispatch(setState({ isLoggingIn: false, profile: data.data }));
     sessionStorage.setItem("profile", JSON.stringify(data.data));
     return Promise.resolve(data);
