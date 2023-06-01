@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -17,9 +17,21 @@ import { Button } from "@material-tailwind/react";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { logos, services } from "../../constants/Logo";
 import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../api";
+import { setState } from "../Products/action";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.data);
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      dispatch(setState(await getProducts({ daysLatest: 7 })));
+    }
+    fetchMyAPI();
+  }, [dispatch]);
 
   return (
     <>
@@ -88,7 +100,11 @@ const HomePage = () => {
                   <div className="w-full h-275 border-2 border-second lg:mt-5 md:mt-4 sm:mt-2">
                     <div className="grid grid-cols-5 items-center justify-items-center h-full gap-2 mx-10 p-5">
                       {logos.map((logo) => (
-                        <img key={logo.id} src={logo.logo} alt={`logo ${logo.id}`} />
+                        <img
+                          key={logo.id}
+                          src={logo.logo}
+                          alt={`logo ${logo.id}`}
+                        />
                       ))}
                     </div>
                   </div>
@@ -112,16 +128,12 @@ const HomePage = () => {
             </div>
             <div className="lg:max-w-full px-12">
               <div className="snap-x flex snap-mandatory overflow-x-auto">
-                <HomeItem
-                  logo={cn}
-                  storeName={"Chanel"}
-                  productImg={cn}
-                  productName={
-                    "Gucci Blondie Shoulder Bag In Beige And Ebony Supreme"
-                  }
-                  oldPrice={1999}
-                  newPrice={999}
-                />
+                {products.map((product) => (
+                  <HomeItem
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -208,10 +220,10 @@ const HomePage = () => {
           <div className="max-h-700 bg-third-2">
             <div className="container h-full mx-auto">
               <div className="grid grid-cols-4 gap-4 h-full p-10 justify-items-center">
-                <div class="col-span-4 md:col-span-2">
+                <div className="col-span-4 md:col-span-2">
                   <img src={bg1} alt="item3" className="h-275" />
                 </div>
-                <div class="col-span-4 md:col-span-2">
+                <div className="col-span-4 md:col-span-2">
                   <img src={bg4} alt="item1" className="h-275" />
                 </div>
               </div>
