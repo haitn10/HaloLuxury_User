@@ -3,8 +3,10 @@ import { Card, CardBody } from "@material-tailwind/react";
 import { StarIcon } from "@heroicons/react/24/solid";
 import { useDispatch } from "react-redux";
 import { AddCart } from "../../pages/Cart/action";
+import { useNavigate } from "react-router";
 
 const ProductItem = ({ product }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const AddToCart = async (product) => {
     dispatch(await AddCart(product));
@@ -25,14 +27,19 @@ const ProductItem = ({ product }) => {
             <div className="w-full xl:flex xl:justify-between mb-3">
               <div className="flex items-center text-sm mb-1">
                 <StarIcon className="w-4 h-4 mr-1 mb-1 text-yellow" />
-                <span className="text-gray whitespace-nowrap mr-2">{product.store.rate}</span>
+                <span className="text-gray whitespace-nowrap mr-2">
+                  {product.store.rate}
+                </span>
                 <span className="font-medium">{product.store.name}</span>
               </div>
               <div className="xl:flex xl:items-center max-w-max text-center bg-green text-light text-xs px-2 py-1 xl:ml-3 rounded-10">
                 {product.category.name}
               </div>
             </div>
-            <div className="flex items-center w-full justify-between min-w-0 ">
+            <div
+              className="flex items-center w-full justify-between min-w-0 "
+              onClick={() => navigate(`/products/${product.id}/details`)}
+            >
               <p className="text-sm mr-auto h-14 cursor-pointer text-gray line-clamp-3">
                 {product.name}
               </p>

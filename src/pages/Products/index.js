@@ -45,13 +45,13 @@ const Shop = (props) => {
           style={{ backgroundImage: `url(${bg})` }}
           className="h-20 flex justify-center items-center"
         >
-          <div className="flex snap-x gap-14">
+          {/* <div className="flex snap-x gap-14">
             <div className="bg-white hover:bg-second active:bg-second rounded-20 transition-all">
               <Button className="border-1 border-primary rounded-20 hover:text-light active:text-light transition-all font-bold text-sm w-32">
                 Bags
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="container mx-auto">
           <div className="grid grid-cols-5 pt-10">
@@ -138,7 +138,7 @@ const Shop = (props) => {
                   </div>
                   <input
                     id="default-search"
-                    className="block p-4 w-225 md:w-450 pl-10 text-sm text-gray border-1 border-primary rounded-20 bg-third-2"
+                    className="block p-4 w-225 md:w-450 pl-10 text-sm text-gray border-1 border-primary rounded-20 bg-third-1 focus:outline-0"
                     placeholder="Tên sẩn phẩm...."
                     onChange={handleSearch}
                   />
