@@ -1,3 +1,6 @@
-export const SET_PROFILE_STATE = 'SET_PROFILE_STATE'
-export const UPDATE_PROFILE = 'UPDATE_PROFILE'
-export const LOG_OUT = 'LOG_OUT'
+export const SET_PRODUCT_DETAILS = "SET_PRODUCT_DETAILS";
+
+export const setState = (state) => ({
+  type: SET_PRODUCT_DETAILS,
+  state,
+});
