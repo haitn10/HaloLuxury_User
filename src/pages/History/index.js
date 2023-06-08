@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import {
@@ -10,9 +10,22 @@ import {
 } from "@material-tailwind/react";
 import Items from "./Items";
 import data from "../../constants/HistoryItems";
+import { getHistory } from "../../api";
+import { useSelector } from "react-redux";
 
 const History = () => {
-  const [activeTab, setActiveTab] = useState("html");
+  const [activeTab, setActiveTab] = useState("All");
+  const userId = useSelector((state) => state.auth.profile.id);
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    async function getOrder() {
+      setHistory(await getHistory(userId));
+    }
+    getOrder();
+  }, []);
+
+  console.log(history);
 
   return (
     <div className="font-second">
@@ -46,13 +59,16 @@ const History = () => {
             <TabsBody>
               {data.map(({ id, value }) => (
                 <TabPanel key={id} value={value}>
-                  <Items status={id} />
+                  {history.reverse().map((order) => (
+                    <Items order={order} />
+                  ))}
                 </TabPanel>
               ))}
             </TabsBody>
           </Tabs>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -24,3 +24,14 @@ export const getProductById = async (req, res) => {
       return err.response;
     });
 };
+
+export const getHistory = async (req, res) => {
+  return await axios
+    .get(`${baseURL}/orders/customers/${req}`)
+    .then((response) => {
+      return response.data.data;
+    })
+    .catch((err) => {
+      return err.response;
+    });
+};

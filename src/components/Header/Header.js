@@ -4,6 +4,7 @@ import logo from "../../assets/HL-Logo.png";
 import {
   Bars3Icon,
   BellIcon,
+  ClipboardDocumentIcon,
   ClockIcon,
   Cog6ToothIcon,
   PowerIcon,
@@ -223,10 +224,10 @@ const Navbar = () => {
                       My Profile
                     </Typography>
                   </MenuItem>
-                  <MenuItem className="flex items-center gap-2">
-                    <Cog6ToothIcon strokeWidth={2} className="h-4 w-4" />
+                  <MenuItem className="flex items-center gap-2" onClick={() => navigate('/history')}>
+                    <ClipboardDocumentIcon strokeWidth={2} className="h-4 w-4" />
                     <Typography variant="small" className="font-normal">
-                      Edit Profile
+                      History
                     </Typography>
                   </MenuItem>
                   <hr className="my-2 border-blue-gray-50" />

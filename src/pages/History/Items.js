@@ -2,22 +2,25 @@ import React from "react";
 import { Button, Card, CardBody, CardFooter } from "@material-tailwind/react";
 import dior from "../../assets/dior.png";
 import tote from "../../assets/tote5.jpg";
+import moment from "moment/moment";
 
-const Items = ({ status }) => {
+const Items = ({ order }) => {
   return (
     <Card className="p-2">
       <div className="flex justify-between items-center my-2 px-3">
         <div className="flex items-center">
           <img
-            src={dior}
+            src={order.store.image}
             alt=""
             className="rounded-full h-10 w-10 object-scale-down border-1 border-primary"
           />
-          <h1 className="font-semibold uppercase mx-3 text-xl">Dior Store</h1>
+          <h1 className="font-semibold uppercase mx-3 text-xl">
+            {order.store.name}
+          </h1>
         </div>
         <div>
           <h1>
-            Order Number: <strong>#1234</strong>
+            Order Number: <strong>#{order.id}</strong>
           </h1>
         </div>
       </div>
@@ -25,24 +28,18 @@ const Items = ({ status }) => {
         <div className="flex justify-between">
           <div className="flex">
             <img
-              src={tote}
+              src={order.orderItem.imageLink}
               alt=""
               className="h-20 w-20 md:h-36 md:w-36 object-scale-down shadow-xl"
             />
             <div className="ml-3">
               <h1 className="font-medium text-base md:text-xl">
-                Dior Book Tote
+                {order.orderItem.productName}
               </h1>
               <h3 className="text-yellow text-sm md:text-lg font-medium">
                 $1.999
               </h3>
             </div>
-          </div>
-          <div className="flex gap-3 items-center max-h-6">
-            <h1>Status:</h1>
-            <p className="text-center p-2 border-1 rounded-10 bg-second border-light-blue-50 text-light font-medium text-sm md:text-base">
-              Waiting confirm
-            </p>
           </div>
         </div>
       </CardBody>
@@ -50,15 +47,17 @@ const Items = ({ status }) => {
         <div className="flex justify-between md:mx-5">
           <div className="md:flex gap-5 text-xs md:text-base">
             <p className="">Orders will be prepared and shipped in advance </p>
-            <strong>--/--/--</strong>
+            <strong>
+              {moment(order.orderTime).add(5, "days").format("DD/MM/YYYY")}
+            </strong>
           </div>
           <div className="md:flex items-center gap-4">
             <h1>
-              Price: <strong>$2.099</strong>
+              Price: <strong>{Intl.NumberFormat("vi-VN").format(order.total)}</strong>
             </h1>
-            <div className="bg-primary text-light">
+            {/* <div className="bg-primary text-light">
               <Button>Cancel Order</Button>
-            </div>
+            </div> */}
           </div>
         </div>
       </CardFooter>
