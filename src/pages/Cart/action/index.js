@@ -3,7 +3,7 @@ import { baseURL } from "../../../api";
 
 export const GET_NUMBER_PRODUCT = "GET_NUMBER_CART";
 export const ADD_CART = "ADD_CART";
-export const UPDATE_CART = "UPDATE_CART";
+export const REMOVE_CART = "REMOVE_CART";
 export const DELETE_CART = "DELETE_CART";
 
 /*GET NUMBER CART*/
@@ -19,9 +19,9 @@ export const AddCart = (state) => {
     state,
   };
 };
-export const UpdateCart = (state) => {
+export const RemoveCart = (state) => {
   return {
-    type: "UPDATE_CART",
+    type: "REMOVE_CART",
     state,
   };
 };
@@ -51,6 +51,7 @@ export const checkOut = () => async (dispatch, getState) => {
   try {
     const data = await axios.post(`${baseURL}/orders`, order);
     sessionStorage.removeItem("cart");
+    dispatch(RemoveCart());
     return Promise.resolve(data.data);
   } catch (e) {
     console.log(e);

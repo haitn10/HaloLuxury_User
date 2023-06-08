@@ -1,4 +1,4 @@
-import { ADD_CART, DELETE_CART, GET_NUMBER_PRODUCT } from "../action";
+import { ADD_CART, DELETE_CART, GET_NUMBER_PRODUCT, REMOVE_CART } from "../action";
 
 const initialState = {
   numberProduct: sessionStorage.getItem("cart")
@@ -54,16 +54,32 @@ function carts(state = initialState, action) {
       };
 
     case DELETE_CART:
+      if (state.products.length === 1) {
+        return {
+          ...state,
+          products: [],
+          numberProduct: 0,
+          sessionStorage: sessionStorage.removeItem("cart"),
+        };
+      } else {
+        return {
+          ...state,
+          products: state.products.filter(
+            (product) => product.id !== action.state
+          ),
+          numberProduct: state.numberProduct - 1,
+          sessionStorage: sessionStorage.setItem(
+            "cart",
+            JSON.stringify(state.products)
+          ),
+        };
+      }
+
+    case REMOVE_CART:
       return {
         ...state,
-        products: state.products.filter(
-          (product) => product.id !== action.state
-        ),
-        numberProduct: state.numberProduct - 1,
-        sessionStorage: sessionStorage.setItem(
-          "cart",
-          JSON.stringify(state.products)
-        ),
+        numberProduct: 0,
+        products: [],
       };
 
     default:

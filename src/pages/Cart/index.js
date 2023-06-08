@@ -34,7 +34,6 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const deleteCart = async (productId) => {
-    console.log(productId);
     dispatch(await DeleteCart(productId));
   };
 
