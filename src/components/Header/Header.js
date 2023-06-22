@@ -45,6 +45,7 @@ const Navbar = () => {
 
   const onLogOut = async () => {
     await dispatch(logOut());
+    navigate("/");
   };
 
   return (
@@ -224,8 +225,14 @@ const Navbar = () => {
                       My Profile
                     </Typography>
                   </MenuItem>
-                  <MenuItem className="flex items-center gap-2" onClick={() => navigate('/history')}>
-                    <ClipboardDocumentIcon strokeWidth={2} className="h-4 w-4" />
+                  <MenuItem
+                    className="flex items-center gap-2"
+                    onClick={() => navigate("/history")}
+                  >
+                    <ClipboardDocumentIcon
+                      strokeWidth={2}
+                      className="h-4 w-4"
+                    />
                     <Typography variant="small" className="font-normal">
                       History
                     </Typography>

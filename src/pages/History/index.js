@@ -7,6 +7,7 @@ import {
   Tabs,
   TabsBody,
   TabsHeader,
+  Typography,
 } from "@material-tailwind/react";
 import Items from "./Items";
 import data from "../../constants/HistoryItems";
@@ -15,17 +16,23 @@ import { useSelector } from "react-redux";
 
 const History = () => {
   const [activeTab, setActiveTab] = useState("All");
-  const userId = useSelector((state) => state.auth.profile.id);
-  const [history, setHistory] = useState([]);
+  const userId = useSelector((state) =>
+    state.auth.profile ? state.auth.profile.id : null
+  );
+  const [history, setHistory] = useState(null);
 
   useEffect(() => {
-    async function getOrder() {
-      setHistory(await getHistory(userId));
+    if (userId === null) {
+      return;
+    } else {
+      async function getOrder() {
+        setHistory(await getHistory(userId));
+      }
+      getOrder();
     }
-    getOrder();
-  }, []);
+  }, [userId]);
 
-  console.log(history);
+  console.log(history !== null);
 
   return (
     <div className="font-second">
@@ -57,13 +64,18 @@ const History = () => {
               ))}
             </TabsHeader>
             <TabsBody>
-              {data.map(({ id, value }) => (
-                <TabPanel key={id} value={value}>
-                  {history.reverse().map((order) => (
-                    <Items order={order} />
-                  ))}
-                </TabPanel>
-              ))}
+              {history !== null ? (
+                data.map(({ id, value }) => (
+                  <TabPanel key={id} value={value}>
+                    {history !== null &&
+                      history.reverse().map((order) => <Items order={order} />)}
+                  </TabPanel>
+                ))
+              ) : (
+                <Typography className="mt-4 p-2 flex justify-center text-lg font-medium">
+                  No data
+                </Typography>
+              )}
             </TabsBody>
           </Tabs>
         </div>
