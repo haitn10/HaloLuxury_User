@@ -49,7 +49,15 @@ const ProductDetails = () => {
   };
 
   const AddToCart = async (product) => {
-    dispatch(await AddCart(product));
+    dispatch(
+      await AddCart({
+        id: product.id,
+        quantity: 1,
+        name: product.name,
+        image: product.images[0].linkImage,
+        price: product.price,
+      })
+    );
   };
 
   return (

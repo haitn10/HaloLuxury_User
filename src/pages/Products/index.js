@@ -3,7 +3,6 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import ProductItem from "../../components/Items/ProductItem";
 import bg from "../../assets/bglogin.png";
-import { Button } from "@material-tailwind/react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../api";
