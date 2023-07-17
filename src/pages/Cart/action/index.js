@@ -36,10 +36,11 @@ export const checkOut = () => async (dispatch, getState) => {
   const cart = getState().carts.products;
   const profile = getState().auth.profile;
   const date = new Date();
+  console.log(profile);
 
   const order = {
     customerId: profile.id,
-    addressId: profile.addresses[0].id,
+    addressId: profile.addresses.length > 0 ? profile.addresses[0].id : 1,
     orderTime: date.toISOString(),
     orderItems: cart.map((product) => {
       let listProductsId = {};
