@@ -150,54 +150,56 @@ const Cart = () => {
                     <span>{Intl.NumberFormat('vi-VN').format(30000)}</span>
                   </div>
                 </div>
-                <div className='flex flex-col justify-between p-3'>
-                  <h1 className='font-semibold'>Phương Thức Thanh Toán</h1>
-                  <div className='flex gap-5'>
-                    <Radio
-                      id='cod'
-                      name='type'
-                      className='border-1 border-second'
-                      defaultChecked
-                      label={
-                        <Typography className='flex items-center gap-2'>
-                          Banking
-                          <BanknotesIcon className='w-5 h-5' color='green' />
-                        </Typography>
-                      }
-                    />
-                    <Radio
-                      id='vnp'
-                      name='type'
-                      className='border-1 border-second'
-                      disabled
-                      label={
-                        <Typography className='flex items-center gap-2'>
-                          VNPay
-                          <DevicePhoneMobileIcon
-                            className='w-5 h-5'
-                            color='orange'
-                          />
-                        </Typography>
-                      }
-                    />
-                    <Radio
-                      id='mtc'
-                      name='type'
-                      className='border-1 border-second'
-                      disabled
-                      label={
-                        <Typography className='flex items-center gap-2'>
-                          MaterCard
-                          <CreditCardIcon className='w-5 h-5' color='gray' />
-                        </Typography>
-                      }
-                    />
+                <div className='flex'>
+                  <div className='flex flex-col justify-between p-3'>
+                    <h1 className='font-semibold'>Phương Thức Thanh Toán</h1>
+                    <div className='flex flex-col gap-5'>
+                      <Radio
+                        id='cod'
+                        name='type'
+                        className='border-1 border-second'
+                        defaultChecked
+                        label={
+                          <Typography className='flex items-center gap-2'>
+                            Banking
+                            <BanknotesIcon className='w-5 h-5' color='green' />
+                          </Typography>
+                        }
+                      />
+                      <Radio
+                        id='vnp'
+                        name='type'
+                        className='border-1 border-second'
+                        disabled
+                        label={
+                          <Typography className='flex items-center gap-2'>
+                            VNPay
+                            <DevicePhoneMobileIcon
+                              className='w-5 h-5'
+                              color='orange'
+                            />
+                          </Typography>
+                        }
+                      />
+                      <Radio
+                        id='mtc'
+                        name='type'
+                        className='border-1 border-second'
+                        disabled
+                        label={
+                          <Typography className='flex items-center gap-2'>
+                            MaterCard
+                            <CreditCardIcon className='w-5 h-5' color='gray' />
+                          </Typography>
+                        }
+                      />
+                    </div>
                   </div>
-                  <div className='w-full h-full flex justify-center items-center'>
+                  <div className='w-full h-full flex flex-1 justify-center items-center'>
                     <img
                       src={BankingLogo}
                       alt='banking'
-                      className='w-1/2 h-1/2'
+                      className='w-1/3 h-1/3'
                     />
                   </div>
                 </div>
