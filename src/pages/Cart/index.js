@@ -44,8 +44,6 @@ const Cart = () => {
     return price;
   }, [cart]);
 
-  console.log(profile);
-
   const onCheckOut = async (e) => {
     e.preventDefault();
     if (profile == null) {

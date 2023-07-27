@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, Card, CardBody, CardFooter } from "@material-tailwind/react";
-import dior from "../../assets/dior.png";
-import tote from "../../assets/tote5.jpg";
+import { Card, CardBody, CardFooter } from "@material-tailwind/react";
 import moment from "moment/moment";
 
 const Items = ({ order }) => {
+  console.log(order);
   return (
     <Card className="p-2">
       <div className="flex justify-between items-center my-2 px-3">
@@ -37,7 +36,7 @@ const Items = ({ order }) => {
                 {order.orderItem.productName}
               </h1>
               <h3 className="text-yellow text-sm md:text-lg font-medium">
-                $1.999
+                {Intl.NumberFormat("vi-VN").format(order.orderItem.total)}
               </h3>
             </div>
           </div>
@@ -53,7 +52,8 @@ const Items = ({ order }) => {
           </div>
           <div className="md:flex items-center gap-4">
             <h1>
-              Price: <strong>{Intl.NumberFormat("vi-VN").format(order.total)}</strong>
+              Price:{" "}
+              <strong>{Intl.NumberFormat("vi-VN").format(order.total)}</strong>
             </h1>
             {/* <div className="bg-primary text-light">
               <Button>Cancel Order</Button>
